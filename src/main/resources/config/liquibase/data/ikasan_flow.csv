@@ -1,11 +1,11 @@
 id;flow_name;status
-1;Highway Ergonomic;RUNNING
+1;Highway Ergonomic;STOPPEDINERROR
 2;New York tangible Mississippi;STOPPED
 3;hard drive Robust Networked;PAUSED
-4;Small partnerships;STOPPED
+4;Small partnerships;RECOVERING
 5;Harbor Montana;STOPPEDINERROR
-6;white Brand Money Market Account;PAUSED
-7;Refined Squares;RUNNING
+6;white Brand Money Market Account;STOPPED
+7;Refined Squares;RECOVERING
 8;EXE projection Fresh;RUNNING
-9;withdrawal;STOPPEDINERROR
-10;ability Hat Iraq;STOPPEDINERROR
+9;withdrawal;PAUSED
+10;ability Hat Iraq;STOPPED

@@ -18,7 +18,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190611191038",
+    "changelogDate": "20190611195137",
     "entityTableName": "ikasan_component",
     "dto": "no",
     "pagination": "no",

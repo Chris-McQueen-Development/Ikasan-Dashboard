@@ -46,6 +46,12 @@ public class CacheConfiguration {
             createCache(cm, org.ikasan.dashboard.domain.User.class.getName());
             createCache(cm, org.ikasan.dashboard.domain.Authority.class.getName());
             createCache(cm, org.ikasan.dashboard.domain.User.class.getName() + ".authorities");
+            createCache(cm, org.ikasan.dashboard.domain.IntegratedSystem.class.getName());
+            createCache(cm, org.ikasan.dashboard.domain.IntegratedSystem.class.getName() + ".modules");
+            createCache(cm, org.ikasan.dashboard.domain.IkasanModule.class.getName());
+            createCache(cm, org.ikasan.dashboard.domain.IkasanModule.class.getName() + ".systems");
+            createCache(cm, org.ikasan.dashboard.domain.IkasanFlow.class.getName());
+            createCache(cm, org.ikasan.dashboard.domain.IkasanComponent.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

@@ -23,7 +23,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20190611191037",
+    "changelogDate": "20190611195136",
     "entityTableName": "ikasan_flow",
     "dto": "no",
     "pagination": "no",
