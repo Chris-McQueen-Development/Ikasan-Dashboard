@@ -1,0 +1,43 @@
+entity IntegratedSystem {
+    systemName String required
+    systemLevel Integer
+}
+
+entity IkasanModule {
+    moduleName String required
+    moduleDescription String
+}
+
+entity IkasanFlow {
+    flowName String required
+    status State
+}
+
+entity IkasanComponent {
+    componentName String required
+}
+
+enum State {
+	RUNNING, RECOVERING, STOPPED, STOPPEDINERROR, PAUSED
+}
+
+relationship ManyToOne {
+	IkasanFlow{module} to IkasanModule
+    IkasanComponent{flow} to IkasanFlow
+}
+
+relationship ManyToMany {
+	IntegratedSystem{module} to IkasanModule{system}
+}
+// Set pagination options
+//paginate JobHistory, Employee with infinite-scroll
+//paginate Job with pagination
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+//service all with serviceImpl except Employee, Job
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

@@ -1,0 +1,35 @@
+{
+    "name": "IkasanFlow",
+    "fields": [
+        {
+            "fieldName": "flowName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "State",
+            "fieldValues": "RUNNING,RECOVERING,STOPPED,STOPPEDINERROR,PAUSED"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ikasanModule",
+            "otherEntityRelationshipName": "ikasanFlow",
+            "relationshipName": "module",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190611191037",
+    "entityTableName": "ikasan_flow",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

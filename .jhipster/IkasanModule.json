@@ -1,0 +1,35 @@
+{
+    "name": "IkasanModule",
+    "fields": [
+        {
+            "fieldName": "moduleName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "moduleDescription",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "integratedSystem",
+            "otherEntityRelationshipName": "module",
+            "relationshipName": "system",
+            "otherEntityField": "id",
+            "ownerSide": false
+        }
+    ],
+    "changelogDate": "20190611191036",
+    "entityTableName": "ikasan_module",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,30 @@
+{
+    "name": "IkasanComponent",
+    "fields": [
+        {
+            "fieldName": "componentName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "ikasanFlow",
+            "otherEntityRelationshipName": "ikasanComponent",
+            "relationshipName": "flow",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190611191038",
+    "entityTableName": "ikasan_component",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

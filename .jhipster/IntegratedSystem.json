@@ -1,0 +1,35 @@
+{
+    "name": "IntegratedSystem",
+    "fields": [
+        {
+            "fieldName": "systemName",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "systemLevel",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityName": "ikasanModule",
+            "otherEntityRelationshipName": "system",
+            "relationshipName": "module",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190611191035",
+    "entityTableName": "integrated_system",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
