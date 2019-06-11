@@ -1,0 +1,11 @@
+version: '2'
+services:
+  dashboard-postgresql:
+    image: postgres:11.3
+    # volumes:
+    #     - ~/volumes/jhipster/Dashboard/postgresql/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=Dashboard
+      - POSTGRES_PASSWORD=
+    ports:
+      - 5432:5432

@@ -1,0 +1,37 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "org.ikasan.dashboard"
+    },
+    "jhipsterVersion": "6.1.0",
+    "applicationType": "monolith",
+    "baseName": "Dashboard",
+    "packageName": "org.ikasan.dashboard",
+    "packageFolder": "org/ikasan/dashboard",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": "eureka",
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "OTVlZjAwNTllNjcyNTViYjFjNzlhNjdiN2U2ZDgzM2FiYjU0NDY0YTJjMjJkYzkzNmE2YTczMWM3MDdlYzYyZTlmNWQyMzI3NGQxNTM4M2U0M2ZkYWFjMzc1ZWYxZDE3ZjM4NTRiNzVkYzRkYmJhMGI5NDI2MmI0YWI2N2I0MzY=",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "react",
+    "clientTheme": "superhero",
+    "clientThemeVariant": "primary",
+    "testFrameworks": ["gatling", "cucumber", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": false
+  }
+}
