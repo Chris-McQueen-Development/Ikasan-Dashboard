@@ -8,3 +8,9 @@ Main page styles
   background: url('../../../static/images/jhipster_family_member_0.svg') no-repeat center top;
   background-size: contain;
 }
+
+#container {
+  width: 600px;
+  height: 400px;
+  border: 1px solid lightgray;
+}

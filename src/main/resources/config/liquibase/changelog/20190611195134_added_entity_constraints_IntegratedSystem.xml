@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity IntegratedSystem.
+    -->
+    <changeSet id="20190611195134-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="integrated_system_id"
+                                 baseTableName="integrated_system_module"
+                                 constraintName="fk_integrated_system_module_integrated_system_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="integrated_system"/>
+
+        <addForeignKeyConstraint baseColumnNames="module_id"
+                                 baseTableName="integrated_system_module"
+                                 constraintName="fk_integrated_system_module_module_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="ikasan_module"/>
+        
+    </changeSet>
+</databaseChangeLog>

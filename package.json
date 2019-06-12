@@ -18,8 +18,9 @@
     "loaders.css": "0.1.2",
     "lodash": "4.17.11",
     "moment": "2.24.0",
-    "react": "16.8.5",
-    "react-dom": "16.8.5",
+    "react": "^16.8.5",
+    "react-digraph": "^6.4.0",
+    "react-dom": "^16.8.5",
     "react-hot-loader": "4.8.0",
     "react-jhipster": "0.9.0",
     "react-loadable": "5.5.0",
@@ -36,7 +37,8 @@
     "redux-promise-middleware": "6.1.0",
     "redux-thunk": "2.3.0",
     "tslib": "1.9.3",
-    "uuid": "3.3.2"
+    "uuid": "3.3.2",
+    "vis-react": "^0.4.5"
   },
   "devDependencies": {
     "@types/chai": "4.1.7",
