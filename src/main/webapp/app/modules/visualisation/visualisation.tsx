@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
-import VisNetwork from '../visualisation/vis';
+import { VisNetwork } from '../visualisation/vis';
 
 import './visualisation.scss';
 

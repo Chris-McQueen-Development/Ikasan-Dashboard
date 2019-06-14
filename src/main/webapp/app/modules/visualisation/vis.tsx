@@ -1,24 +1,15 @@
 import vis from 'vis';
-import React, { Component, createRef } from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { IRootState } from 'app/shared/reducers';
-import { getEntities } from 'app/entities/ikasan-component/ikasan-component.reducer';
+import { getEntities } from './visualisation.reducer';
 
-const nodes = new vis.DataSet([
-  { id: 1, label: 'Node 1' },
-  { id: 2, label: 'Node 2' },
-  { id: 3, label: 'Node 3' },
-  { id: 4, label: 'Node 4' },
-  { id: 5, label: 'Node 5' }
-]);
+let date = new Date();
+let lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 
-// create an array with edges
-const edges = new vis.DataSet([{ from: 1, to: 3 }, { from: 1, to: 2 }, { from: 2, to: 4 }, { from: 2, to: 5 }]);
+let nodes = new vis.DataSet([]);
+const edges = new vis.DataSet([{ from: 0, to: 1 }, { from: 1, to: 3 }, { from: 2, to: 1 }, { from: 2, to: 4 }, { from: 2, to: 5 }]);
 
-let network = {};
-
-// // initialize your network!
-export default class VisNetwork extends Component {
+export class VisNetwork extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,45 +20,15 @@ export default class VisNetwork extends Component {
   }
 
   componentDidMount() {
-    const data = {
-      nodes,
-      edges
-    };
+    let loadEntities = getEntities();
+    loadEntities.payload.then(result => {
+      for (let i = 0; i < result.data.length; i++) {
+        nodes.add({ id: result.data[i].id, label: result.data[i].flowName });
+      }
+    });
 
     const options = {
-      // edges: {},
-      nodes: {
-        // color: {
-        //   inherit: false
-        // }
-        // image: {
-        //   unselected: 'flow.png',
-        //   selected: './flow.png'
-        // }
-      },
       physics: false,
-      manipulation: {
-        enabled: true,
-        addNode: function(data, callback) {
-          // filling in the popup DOM elements
-          console.log('add', data);
-        },
-        editNode: function(data, callback) {
-          // filling in the popup DOM elements
-          console.log('edit', data);
-        },
-        addEdge: function(data, callback) {
-          console.log('add edge', data);
-          if (data.from == data.to) {
-            var r = confirm('Do you want to connect the node to itself?');
-            if (r === true) {
-              callback(data);
-            }
-          } else {
-            callback(data);
-          }
-        }
-      },
       locale: 'en',
       interaction: {
         navigationButtons: true,
@@ -84,12 +45,12 @@ export default class VisNetwork extends Component {
           blockShifting: true,
           edgeMinimization: true,
           parentCentralization: true,
-          direction: 'LR', // UD, DU, LR, RL
-          sortMethod: 'hubsize' // hubsize, directed
+          direction: 'LR',
+          sortMethod: 'hubsize'
         }
       }
     };
-    let network = new vis.Network(document.getElementById('visigoth'), data, options);
+    let network = new vis.Network(document.getElementById('visigoth'), { nodes, edges }, options);
 
     network.on('click', function(params) {
       console.log('Node Clicked');
@@ -110,27 +71,19 @@ export default class VisNetwork extends Component {
   render() {
     const liStyle = {
       backgroundColor: 'white'
-      // listStyleType: 'none'
     };
 
     const metaStyle = {
       height: '750px'
     };
 
-    const networkStyle = {
-      height: '250px',
-      borderRight: 'dashed 2px'
-    };
-    let date = new Date();
-    // let dateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
-
     return (
       <li key="1" style={liStyle}>
         <div className="row">
           <div className="col-lg-12" style={metaStyle}>
             <div id="visigoth" />
-            <br />
-            {/* <p>Submitted on: {dateString}</p> */}
+            <br /> <br />
+            <p>Submitted on: {lastUpdatedDateString}</p>
           </div>
         </div>
       </li>
