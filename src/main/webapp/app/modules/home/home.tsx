@@ -8,7 +8,6 @@ import { Row, Col, Alert } from 'reactstrap';
 
 import { IRootState } from 'app/shared/reducers';
 import { getSession } from 'app/shared/reducers/authentication';
-import VisNetwork from './vis';
 
 export interface IHomeProp extends StateProps, DispatchProps {}
 
@@ -21,11 +20,11 @@ export class Home extends React.Component<IHomeProp> {
     const { account } = this.props;
     return (
       <Row>
-        <Col md="9">
+        <Col md="6">
           <h2>Welcome, Ikasan User: {account.login}!</h2>
           <p className="lead">Let's get visual</p>
           {account && account.login ? (
-            <VisNetwork />
+            <div />
           ) : (
             <div>
               <Alert color="warning">
@@ -48,8 +47,8 @@ export class Home extends React.Component<IHomeProp> {
             </div>
           )}
         </Col>
-        <Col md="3" className="pad">
-          <span className="hipster rounded" />
+        <Col md="6">
+          <img src={require('./ikasan-full-logo.jpg')} />
         </Col>
       </Row>
     );
