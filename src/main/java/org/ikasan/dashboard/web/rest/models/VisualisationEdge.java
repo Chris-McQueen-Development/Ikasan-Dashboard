@@ -1,5 +1,8 @@
 package org.ikasan.dashboard.web.rest.models;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class VisualisationEdge {
 
     private String from;
@@ -23,5 +26,18 @@ public class VisualisationEdge {
 
     public void setFrom(String from) {
         this.from = from;
+    }
+
+    public boolean isValidFor(VisualisationResponse state) {
+        List<String> availableNodes = state
+            .getNodes()
+            .stream()
+            .map(VisualisationNode::getName)
+            .collect(Collectors.toList());
+
+        return
+            availableNodes.contains(getTo()) &&
+            availableNodes.contains(getFrom()) &&
+            !getTo().equals(getFrom());
     }
 }

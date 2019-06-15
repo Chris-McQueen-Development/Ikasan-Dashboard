@@ -27,17 +27,30 @@ public class VisualisationResource {
     public void addEdge(@Valid @RequestBody VisualisationEdge edge) {
         log.info("Adding edge to current visualisation");
 
-        currentVisualisations.getEdges().add(edge);
-
-        log.info("Added edge successfully");
+        if (edge.isValidFor(currentVisualisations)) {
+            currentVisualisations.getEdges().add(edge);
+            log.info("Added edge successfully");
+        } else {
+            log.error("Edge was not valid, not added");
+            throw new RuntimeException("no node exists with the name specified in either to or from");
+        }
     }
 
     @PostMapping("/node")
     public void addNode(@Valid @RequestBody VisualisationNode node) {
         log.info("Adding node to current visualisation");
 
-        currentVisualisations.getNodes().add(node);
+        if(node.isValidFor(currentVisualisations)) {
+            currentVisualisations.getNodes().add(node);
+            log.info("Added node successfully");
+        } else {
+            log.error("node was not valid, not added");
+            throw new RuntimeException("node with same name already exists");
+        }
+    }
 
-        log.info("Added node successfully");
+    @DeleteMapping("/reset")
+    public void reset() {
+        currentVisualisations = new VisualisationResponse();
     }
 }
