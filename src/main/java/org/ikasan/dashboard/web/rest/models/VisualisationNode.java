@@ -33,4 +33,8 @@ public class VisualisationNode {
     public void setStatus(VisualisationNodeStatus status) {
         this.status = status;
     }
+
+    public boolean isValidFor(VisualisationResponse state) {
+        return state.getNodes().stream().noneMatch(n -> n.getName().equals(getName()));
+    }
 }
