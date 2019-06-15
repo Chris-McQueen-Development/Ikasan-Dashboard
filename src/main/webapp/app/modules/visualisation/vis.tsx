@@ -1,6 +1,7 @@
 import vis from 'vis';
 import React, { Component } from 'react';
 import { getEntities } from './visualisation.reducer';
+import visOptions from './data/options.json';
 
 const date = new Date();
 let lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
@@ -27,29 +28,9 @@ export class VisNetwork extends Component {
       lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     });
 
-    const options = {
-      physics: false,
-      locale: 'en',
-      interaction: {
-        navigationButtons: true,
-        keyboard: true,
-        hover: true
-      },
-      layout: {
-        improvedLayout: true,
-        hierarchical: {
-          enabled: true,
-          levelSeparation: 150,
-          nodeSpacing: 100,
-          treeSpacing: 200,
-          blockShifting: true,
-          edgeMinimization: true,
-          parentCentralization: true,
-          direction: 'LR',
-          sortMethod: 'hubsize'
-        }
-      }
-    };
+    // Note: We could pass through the Visjs options from the backend/java
+    // We could even let users maintain their own preferred visjs otions
+    const options = visOptions;
     let network = new vis.Network(document.getElementById('visigoth'), { nodes, edges }, options);
 
     network.on('click', function(params) {
