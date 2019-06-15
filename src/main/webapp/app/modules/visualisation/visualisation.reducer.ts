@@ -6,7 +6,8 @@ import { REQUEST, SUCCESS, FAILURE } from 'app/shared/reducers/action-type.util'
 import { IIkasanFlow, defaultValue } from 'app/shared/model/ikasan-flow.model';
 
 export const ACTION_TYPES = {
-  FETCH_IKASANFLOW_LIST: 'ikasanFlow/FETCH_IKASANFLOW_LIST'
+  FETCH_IKASANFLOW_LIST: 'ikasanFlow/FETCH_IKASANFLOW_LIST',
+  FETCH_VISUALISATION_LIST: 'FETCH_VISUALISATION_LIST'
 };
 
 const initialState = {
@@ -32,16 +33,27 @@ export default (state: IkasanFlowState = initialState, action): IkasanFlowState 
         loading: false,
         entities: action.payload.data
       };
+    case SUCCESS(ACTION_TYPES.FETCH_VISUALISATION_LIST):
+      return {
+        ...state,
+        loading: false,
+        entities: action.payload.data
+      };
     default:
       return state;
   }
 };
 
 const apiUrl = 'api/ikasan-flows';
-
+const apiUrlVisualisation = '/api/channel/visualisation';
 // Actions
 
 export const getEntities = () => ({
   type: ACTION_TYPES.FETCH_IKASANFLOW_LIST,
   payload: axios.get(`${apiUrl}?cacheBuster=${new Date().getTime()}`)
+});
+
+export const getVisualisation = () => ({
+  type: ACTION_TYPES.FETCH_VISUALISATION_LIST,
+  payload: axios.get(`${apiUrlVisualisation}/`)
 });
