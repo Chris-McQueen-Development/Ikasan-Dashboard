@@ -1,0 +1,43 @@
+package org.ikasan.dashboard.web.rest;
+
+import org.ikasan.dashboard.web.rest.models.VisualisationEdge;
+import org.ikasan.dashboard.web.rest.models.VisualisationNode;
+import org.ikasan.dashboard.web.rest.models.VisualisationResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+@RestController
+@RequestMapping("/api/channel/visualisation")
+public class VisualisationResource {
+
+    private static VisualisationResponse currentVisualisations = new VisualisationResponse();
+
+    private static final Logger log = LoggerFactory.getLogger(VisualisationResource.class);
+
+    @GetMapping("/")
+    public VisualisationResponse getVisualisation() {
+        log.info("REST request to visualisation end point made, returning in-memory results");
+        return currentVisualisations;
+    }
+
+    @PostMapping("/edge")
+    public void addEdge(@Valid @RequestBody VisualisationEdge edge) {
+        log.info("Adding edge to current visualisation");
+
+        currentVisualisations.getEdges().add(edge);
+
+        log.info("Added edge successfully");
+    }
+
+    @PostMapping("/node")
+    public void addNode(@Valid @RequestBody VisualisationNode node) {
+        log.info("Adding node to current visualisation");
+
+        currentVisualisations.getNodes().add(node);
+
+        log.info("Added node successfully");
+    }
+}
