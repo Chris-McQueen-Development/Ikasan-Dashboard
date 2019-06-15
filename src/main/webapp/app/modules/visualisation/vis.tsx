@@ -23,11 +23,9 @@ export class VisNetwork extends Component {
     const loadVisualisationData = getVisualisation();
     loadVisualisationData.payload.then(result => {
       for (const node of result.data.nodes) {
-        console.log(node);
-        nodes.add({ id: node.name, label: node.name, image: require('./data/flow-img.png') });
+        nodes.add({ id: node.name, label: node.name, image: require('./data/' + node.type + '.png') });
       }
       for (const edge of result.data.edges) {
-        console.log(edge);
         edges.add({ from: edge.from, to: edge.to });
       }
     });
