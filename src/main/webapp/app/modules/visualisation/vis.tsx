@@ -7,7 +7,13 @@ const date = new Date();
 let lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 
 const nodes = new vis.DataSet([]);
-const edges = new vis.DataSet([{ from: 0, to: 1 }, { from: 1, to: 3 }, { from: 2, to: 1 }, { from: 2, to: 4 }, { from: 2, to: 5 }]);
+const edges = new vis.DataSet([
+  { from: 'hello', to: 'world' },
+  { from: 1, to: 3 },
+  { from: 2, to: 1 },
+  { from: 2, to: 4 },
+  { from: 2, to: 5 }
+]);
 
 export class VisNetwork extends Component {
   constructor(props) {
@@ -23,7 +29,7 @@ export class VisNetwork extends Component {
     const loadEntities = getEntities();
     loadEntities.payload.then(result => {
       for (const node of result.data) {
-        nodes.add({ id: node.id, label: node.flowName });
+        nodes.add({ id: node.id, label: node.flowName, image: require('./data/flow-img.png') });
       }
       lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     });
@@ -64,6 +70,7 @@ export class VisNetwork extends Component {
             <div id="visigoth" />
             <br /> <br />
             <p>Submitted on: {lastUpdatedDateString}</p>
+            <img src={require('./data/flow-img.png')} />
           </div>
         </div>
       </li>

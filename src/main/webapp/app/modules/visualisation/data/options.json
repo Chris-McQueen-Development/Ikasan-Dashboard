@@ -1,6 +1,9 @@
 {
   "physics": false,
   "locale": "en",
+  "nodes": {
+    "shape": "image"
+  },
   "interaction": {
     "navigationButtons": true,
     "keyboard": true,

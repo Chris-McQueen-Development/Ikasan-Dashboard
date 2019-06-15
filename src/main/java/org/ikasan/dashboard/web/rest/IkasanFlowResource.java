@@ -50,7 +50,7 @@ public class IkasanFlowResource {
     public ResponseEntity<IkasanFlow> createIkasanFlow(@Valid @RequestBody IkasanFlow ikasanFlow) throws URISyntaxException {
         log.debug("REST request to save IkasanFlow : {}", ikasanFlow);
         if (ikasanFlow.getId() != null) {
-            throw new BadRequestAlertException("A new ikasanFlow cannot already have an ID", ENTITY_NAME, "idexists");
+            throw new BadRequestAlertException("As new ikasanFlow cannot already have an ID", ENTITY_NAME, "idexists");
         }
         IkasanFlow result = ikasanFlowRepository.save(ikasanFlow);
         return ResponseEntity.created(new URI("/api/ikasan-flows/" + result.getId()))
