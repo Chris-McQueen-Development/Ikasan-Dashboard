@@ -55,6 +55,8 @@
     "@types/selenium-webdriver": "3.0.15",
     "@types/webpack-env": "1.13.9",
     "autoprefixer": "9.5.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
     "base-href-webpack-plugin": "2.0.0",
     "browser-sync": "2.26.5",
     "browser-sync-webpack-plugin": "2.2.2",

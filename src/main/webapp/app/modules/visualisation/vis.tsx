@@ -1,12 +1,11 @@
 import vis from 'vis';
 import React, { Component } from 'react';
-import { IRootState } from 'app/shared/reducers';
 import { getEntities } from './visualisation.reducer';
 
-let date = new Date();
+const date = new Date();
 let lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
 
-let nodes = new vis.DataSet([]);
+const nodes = new vis.DataSet([]);
 const edges = new vis.DataSet([{ from: 0, to: 1 }, { from: 1, to: 3 }, { from: 2, to: 1 }, { from: 2, to: 4 }, { from: 2, to: 5 }]);
 
 export class VisNetwork extends Component {
@@ -20,11 +19,12 @@ export class VisNetwork extends Component {
   }
 
   componentDidMount() {
-    let loadEntities = getEntities();
+    const loadEntities = getEntities();
     loadEntities.payload.then(result => {
-      for (let i = 0; i < result.data.length; i++) {
-        nodes.add({ id: result.data[i].id, label: result.data[i].flowName });
+      for (const node of result.data) {
+        nodes.add({ id: node.id, label: node.flowName });
       }
+      lastUpdatedDateString = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear();
     });
 
     const options = {
