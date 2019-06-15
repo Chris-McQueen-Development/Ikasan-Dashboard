@@ -33,6 +33,11 @@ export class VisNetwork extends Component {
     // Note: We could pass through the Visjs options from the backend/java
     // We could even let users maintain their own preferred visjs otions
     let network = new vis.Network(document.getElementById('visigoth'), { nodes, edges }, visOptions);
+
+    network.on('click', function(params) {
+      console.log(params);
+      // TODO: Send to backend
+    });
   }
 
   render() {

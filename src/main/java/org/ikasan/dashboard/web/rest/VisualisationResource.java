@@ -1,5 +1,6 @@
 package org.ikasan.dashboard.web.rest;
 
+import org.ikasan.dashboard.web.rest.models.Event;
 import org.ikasan.dashboard.web.rest.models.VisualisationEdge;
 import org.ikasan.dashboard.web.rest.models.VisualisationNode;
 import org.ikasan.dashboard.web.rest.models.VisualisationResponse;
@@ -47,6 +48,13 @@ public class VisualisationResource {
             log.error("node was not valid, not added");
             throw new RuntimeException("node with same name already exists");
         }
+    }
+
+    @PostMapping("/event")
+    public void addEvent(@Valid @RequestBody Event event) {
+        log.info("Event occurred and logged.");
+
+        currentVisualisations.getEvents().add(event);
     }
 
     @DeleteMapping("/reset")

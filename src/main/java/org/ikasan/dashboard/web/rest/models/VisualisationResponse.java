@@ -7,6 +7,7 @@ public class VisualisationResponse {
 
     private List<VisualisationNode> nodes = new ArrayList<>();
     private List<VisualisationEdge> edges = new ArrayList<>();
+    private List<Event> events = new ArrayList<>();
 
     public VisualisationResponse() {
         // required by jackson
@@ -27,4 +28,8 @@ public class VisualisationResponse {
     public void setEdges(List<VisualisationEdge> edges) {
         this.edges = edges;
     }
+
+    public List<Event> getEvents() { return events; }
+
+    public void setEvents(List<Event> events) { this.events = events; }
 }

@@ -7,7 +7,8 @@ import { IIkasanFlow, defaultValue } from 'app/shared/model/ikasan-flow.model';
 
 export const ACTION_TYPES = {
   FETCH_IKASANFLOW_LIST: 'ikasanFlow/FETCH_IKASANFLOW_LIST',
-  FETCH_VISUALISATION_LIST: 'FETCH_VISUALISATION_LIST'
+  FETCH_VISUALISATION_LIST: 'FETCH_VISUALISATION_LIST',
+  CREATE_VISUALISATION_EVENT: 'CREATE_VISUALISATION_EVENT'
 };
 
 const initialState = {
@@ -39,6 +40,7 @@ export default (state: IkasanFlowState = initialState, action): IkasanFlowState 
         loading: false,
         entities: action.payload.data
       };
+    case SUCCESS(ACTION_TYPES.CREATE_VISUALISATION_EVENT):
     default:
       return state;
   }
@@ -57,3 +59,12 @@ export const getVisualisation = () => ({
   type: ACTION_TYPES.FETCH_VISUALISATION_LIST,
   payload: axios.get(`${apiUrlVisualisation}/`)
 });
+
+export const createEvent = event => async dispatch => {
+  const result = await dispatch({
+    type: ACTION_TYPES.CREATE_VISUALISATION_EVENT,
+    payload: axios.post(apiUrl, event)
+  });
+  dispatch(getVisualisation());
+  return result;
+};
