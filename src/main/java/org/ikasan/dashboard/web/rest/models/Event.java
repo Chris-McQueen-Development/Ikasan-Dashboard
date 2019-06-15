@@ -1,11 +1,8 @@
 package org.ikasan.dashboard.web.rest.models;
 
-import com.google.api.client.util.DateTime;
-
 public class Event {
     String node;
     String eventType;
-    DateTime eventTimestamp;
 
     public Event() {
 
@@ -27,13 +24,5 @@ public class Event {
         this.eventType = eventType;
     }
 
-    public DateTime getEventTimestamp() {
-        return eventTimestamp;
-    }
-
-    public void setEventTimestamp(DateTime eventTimestamp) {
-        this.eventTimestamp = eventTimestamp;
-    }
-
-    // TODO: coordinates, angle, pointerType, type, etc
+    // TODO: eventtimestamp, coordinates, angle, pointerType, type, etc
 }

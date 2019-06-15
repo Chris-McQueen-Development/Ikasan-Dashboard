@@ -1,6 +1,6 @@
 import vis from 'vis';
 import React, { Component } from 'react';
-import { getVisualisation } from './visualisation.reducer';
+import { getVisualisation, createEvent } from './visualisation.reducer';
 import visOptions from './data/options.json';
 
 const date = new Date();
@@ -36,6 +36,8 @@ export class VisNetwork extends Component {
 
     network.on('click', function(params) {
       console.log(params);
+      let event = {};
+      //const postEvent = createEvent();
       // TODO: Send to backend
     });
   }
